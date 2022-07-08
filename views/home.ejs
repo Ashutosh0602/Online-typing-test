@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Type Race</title>
+</head>
+<body>
+    <main>
+        <header class="header">
+            <nav class="navbar">
+                <div class="navbar_line"></div>
+                <div class="navbar_logo">logo</div>
+            </nav>
+        </header>
+        <div class="main_conatainer">
+            <div class="online_container">
+                <div class="new_event_online">ONLINE</div>
+                <div class="new_event">
+                   <p class="new_event_p"><span class="new_event_span"></span></p>
+                </div>
+            </div>
+                
+            <div class="para">
+                <h2 class="main_para"><%= para %></h2>
+                <div class="score">
+                    <div class="scoreNWP"></div>
+                </div>
+            </div>
+            <div class="leaderboard">
+                <div class="leaderboard_name">Leaderboard</div>
+                <p class="player_leader">ashutosh</p>
+            </div>
+        </div>
+        
+        
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
