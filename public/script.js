@@ -1,4 +1,5 @@
 let y_name = prompt("Write your name");
+
 let reply_name = false;
 while (!reply_name) {
   if (y_name === null) {
@@ -9,10 +10,11 @@ while (!reply_name) {
 }
 
 let ls = document.getElementsByClassName("main_para")[0].innerText;
-
 let txt = document.getElementsByClassName("main_para")[0];
+
 const spanLength = "<span class='black'>x</span>".length;
 let ls_item = 0;
+
 document.addEventListener("keydown", (e) => {
   if (e.key == ls[ls_item]) {
     let oldText = txt.innerHTML;
@@ -61,7 +63,13 @@ document.addEventListener("keydown", (e) => {
       console.log(`total incorrect words:${in_word}`);
       const net_word = (total_entries / 5 - in_word) / (final_time / 60);
       if (net_word > 0) {
+        let data = [y_name, net_word.toFixed(2)];
+        socket.emit("dataInsert", data);
         document.getElementsByClassName("scoreNWP")[0].innerText =
+          net_word.toFixed(2);
+        document.getElementsByClassName("name_results_name")[0].innerText =
+          y_name;
+        document.getElementsByClassName("name_results_score")[0].innerText =
           net_word.toFixed(2);
         document.getElementsByClassName("score")[0].style.display = "flex";
       } else {
@@ -98,8 +106,21 @@ document.addEventListener("keydown", (e) => {
 
 const ins_elem = document.getElementsByClassName("new_event")[0];
 const ins_elem_node = ins_elem.children[0].classList[0];
+
 const socket = io.connect("http://localhost:3210");
+
 socket.emit("user", y_name);
+
+socket.on("findUser", (rank) => {
+  for (let i = 0; i < rank.length; i++) {
+    let elem = document.createElement("p");
+    elem.innerText = rank[i].user;
+    elem.classList.add("rankUser");
+    document.getElementsByClassName("player_leader")[0].appendChild(elem);
+  }
+  console.log(rank);
+});
+
 socket.on("active", (user) => {
   if (ins_elem.childElementCount > 0) {
     for (let i = 0; i < ins_elem.childElementCount; i++) {
@@ -108,14 +129,8 @@ socket.on("active", (user) => {
   }
   for (let i = 0; i < user.length; i++) {
     let new_in_elm = document.createElement("p");
-    // let new_span_elem = document.createElement("span");
-    // new_span_elem.classList.add("new_event_span");
     new_in_elm.innerText = user[i].name;
     new_in_elm.classList.add("new_event_p");
-    // ins_elem.appendChild(new_span_elem);
     ins_elem.appendChild(new_in_elm);
   }
-  //   for (let i = 0; i < user.length; i++) {
-  //     console.log(user[i].name);
-  //   }
 });
