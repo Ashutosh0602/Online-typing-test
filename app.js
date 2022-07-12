@@ -1,8 +1,12 @@
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
+
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
+
 const typeUser = require("./schema");
 const ls_text = require("./textpara");
-const mongoose = require("mongoose");
 
 const socket = require("socket.io");
 var port = process.env.PORT || 3210;
@@ -16,7 +20,7 @@ app.use(express.static(__dirname + "/public"));
 
 mongoose
   .connect(
-    "mongodb+srv://natours:12345qwerty@cluster0.kylf9c1.mongodb.net/?retryWrites=true&w=majority",
+    `mongodb+srv://natours:${process.env.PASSOWRD}@cluster0.kylf9c1.mongodb.net/?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
     }
