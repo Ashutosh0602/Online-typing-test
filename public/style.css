@@ -79,6 +79,8 @@ main{
     flex-direction: column;
     border-left: 2px solid rgb(94, 94, 94);
     text-align: center;
+    /* justify-content: center; */
+    align-items: center;
     /* background-color: aqua; */
 }
 .leaderboard_name{
@@ -92,9 +94,12 @@ main{
 
 }
 .para{
-    margin: auto;
-    padding: auto;
-    width: 60vw;
+    /* margin: auto;
+    padding: auto; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
     text-align: center;
     position: relative;
 }
@@ -102,6 +107,8 @@ main{
     /* width: 60%; */
     font-size: 150%;
     text-align: left;
+    padding-left: 2rem;
+    padding-right: 2rem;
     letter-spacing: 1px;
     color: grey;
     font-family: 'Kdam Thmor Pro', sans-serif;
@@ -112,20 +119,22 @@ main{
 }
 .score{
     position: absolute;
-    height: 50vh;
+    height: 100%;
     width: 100%;
     padding-top: 5rem;
     padding-bottom: 5rem;
-    /* position: absolute; */
     display: none;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     bottom: 0;
     background-color: black;
+        /* background-color: aqua; */
+
 }
 .scoreNWP{
     width: 25%;
-    height: 90%;
+    height: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -136,23 +145,40 @@ main{
     color: darkgray;
     border-radius:100%;
     text-align: center;
+    margin-bottom: 3rem;
+}
+.name_results > span{
+    font-size: 1.5rem;
+    color: whitesmoke;
+    font-family: 'Kdam Thmor Pro', sans-serif;
 }
 .new_event_p{
     border-left: 2px solid rgb(159, 144, 1);
     margin-bottom: 0.5rem;
     color: whitesmoke;
 }
-form{
-    /* width: 100%; */
-    /* height: 100%; */
+.name_results_name{
+    color: rgb(159, 144, 1) !important;
+    font-size: 1.5rem;
+}
+.name_results_score{
+    font-size: 2.3rem;
+    color: rgb(159, 144, 1) !important;
 }
 button{
     background-color: rgba(0, 0, 0, 0);
     border: none;
     font-size: 170%;
-    /* width: 100%; */
-    /* height: 180%; */
 }
 button:hover{
     cursor: pointer;
+}
+.main_para > span{
+    font-size: 1.8rem;
+}
+.player_leader{
+    color: whitesmoke;
+}
+.rankUser{
+    color: whitesmoke;
 }
